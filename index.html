@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflix</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="images/logo.png" alt="" />
+      </div>
+      <div class="menu">
+        <a href="">Trang chủ</a>
+        <a href="phimbo.html">Phim bộ</a>
+        <a href="">Phim lẻ</a>
+        <a href="">Anime</a>
+      </div>
+      <div id="dangNhapDangKy" class="dangnhapdangky"></div>
+    </header>
+
+    <div class="mainMenu">
+      <div class="denden"></div>
+      <div class="poster">
+        <img class="levi" src="images/levi.webp" alt="" />
+
+        <div class="imgMain">
+          <img src="images/poster_aot.png" alt="" />
+          <div class="khongden"></div>
+        </div>
+
+        <h1>ATTACK ON TITAN</h1>
+      </div>
+      <div class="content">
+        <h2>ATTACK ON TITAN</h2>
+        <h3>Đạo diễn: Tetsurō Araki</h3>
+        <h3>Thời lượng: 180 phút</h3>
+        <p>
+          Attack on Titan khởi đầu trong một thế giới giả tưởng, nơi những tàn
+          dư cuối cùng của nhân loại phải ẩn náu sau ba bức tường thành khổng lồ
+          (Maria, Rose, Sina) để bảo vệ bản thân khỏi Titan—những sinh vật khổng
+          lồ, vô tri, chuyên ăn thịt người. Nhân vật chính là Eren Yeager, cậu
+          bé sống trong tường thành Maria, chứng kiến mẹ mình bị Titan ăn thịt
+          trong cuộc đột kích thảm khốc của Titan Đại Hình và Titan Thiết Giáp.
+          Sự kiện này nung nấu trong Eren một lòng căm thù sâu sắc và khao khát
+          trả thù, thúc đẩy cậu cùng hai người bạn thân là Mikasa Ackerman và
+          Armin Arlert gia nhập Binh đoàn Trinh sát (Survey Corps)—những chiến
+          binh tinh nhuệ mạo hiểm tính mạng để chiến đấu bên ngoài các bức
+          tường.
+        </p>
+      </div>
+    </div>
+    <script>
+      function dangXuat() {
+        localStorage.removeItem("trangThai");
+        alert("Xin chào hẹn gặp lại! ");
+        window.location.href = "dangnhap.html";
+      }
+
+      var trangThai = localStorage.getItem("trangThai");
+      if (trangThai == "daDangNhap") {
+        document.getElementById("dangNhapDangKy").innerHTML =
+          "<h1> Xin chao " +
+          ten +
+          '<h1>Xin chào Thiện Nhân</h1> <button class="btn-dangXuat" onclick="dangXuat();">Đăng xuất</button>';
+      } else {
+        document.getElementById("dangNhapDangKy").innerHTML =
+          '<a href="dangnhap.html" class="theadangnhap"><button class="btn-dangnhap">Đăng nhập</button></a><a href="dangky.html  " class="theadangnhap"><button class="btn-dangnhap">Đăng ký</button></a>';
+      }
+    </script>
+  </body>
+</html>

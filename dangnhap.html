@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="css/dangnhap.css" />
+  </head>
+  <body>
+    <script>
+      var trangThai = localStorage.getItem("trangThai");
+      if (trangThai == "daDangNhap") {
+        window.localStorage.href = "index.html";
+      }
+    </script>
+    <div class="khungdangnhap">
+      <div class="div1">
+        <img src="images/logo.png" alt="" />
+      </div>
+      <div class="div2">
+        <h1>ĐĂNG NHẬP</h1>
+      </div>
+
+      <div class="div4">
+        <h4>Username</h4>
+      </div>
+
+      <div class="div3">
+        <input id="username" type="text" placeholder="Nhập username" />
+      </div>
+      <div class="div4">
+        <h4>Password</h4>
+      </div>
+
+      <div class="div3">
+        <input id="password" type="password" placeholder="Nhập password" />
+      </div>
+
+      <div class="div5">
+        <div class="div6">
+          <input type="checkbox" />
+          <p>Lưu đăng nhập</p>
+        </div>
+        <a href="">Quên mật khẩu?</a>
+      </div>
+
+      <div class="div7">
+        <button onclick="dangNhap();">ĐĂNG NHẬP</button>
+      </div>
+    </div>
+
+    <script>
+      function dangNhap() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        var taiKhoanHeThong = localStorage.getItem("username");
+        var matKhauHeThong = localStorage.getItem("password");
+
+        if (username == taiKhoanHeThong && password == matKhauHeThong) {
+          alert("Dang nhap thanh cong");
+          localStorage.setItem("trangThai", "daDangNhap");
+          window.location.href = "index.html";
+        } else if (username != taiKhoanHeThong || password != matKhauHeThong) {
+          alert("Sai tk hoac mk");
+        }
+      }
+    </script>
+  </body>
+</html>

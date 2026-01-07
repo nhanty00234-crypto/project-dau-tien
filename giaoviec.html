@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Board - Tech Light Edition</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --neon-blue: #00f2fe;
+        --neon-purple: #bd00ff;
+        --neon-orange: #ff7b00; /* Màu FPT sáng hơn */
+        --glass-bg: rgba(255, 255, 255, 0.65);
+        --glass-border: rgba(255, 255, 255, 0.9);
+        --text-dark: #2a2a3e;
+        --text-light-grey: #6c757d;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif; /* Font cho nội dung bảng */
+        margin: 0;
+        padding: 20px;
+        background: linear-gradient(
+          135deg,
+          #e0f7fa 0%,
+          #f3e5f5 100%
+        ); /* Nền sáng gradient */
+        color: var(--text-dark);
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* --- Canvas Animation Background --- */
+      #bg-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Nằm dưới cùng */
+      }
+
+      /* --- Typography & Common Styles --- */
+      h1,
+      h2,
+      h3,
+      th,
+      .group-header,
+      .is-leader {
+        font-family: "Rajdhani", sans-serif; /* Font tiêu đề công nghệ */
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* --- Header Styling (Glassmorphism) --- */
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 30px;
+
+        /* Hiệu ứng kính */
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 16px;
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Đường viền sáng trên header */
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--neon-blue),
+          var(--neon-purple),
+          var(--neon-orange)
+        );
+        box-shadow: 0 0 10px var(--neon-blue);
+      }
+
+      header h1 {
+        background: linear-gradient(90deg, #ff4e00, #ffbb00);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0;
+        font-size: 2.2rem;
+        font-weight: 800;
+        text-shadow: 0 0 20px rgba(255, 123, 0, 0.3);
+      }
+
+      header h2 {
+        color: var(--text-dark);
+        margin: 15px 0 5px;
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      header p {
+        color: var(--text-light-grey);
+        margin: 0;
+        font-weight: 500;
+        font-size: 1.1rem;
+      }
+
+      /* --- Layout Container --- */
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+        z-index: 1;
+      }
+
+      /* --- Group Card (Glassmorphism) --- */
+      .group-card {
+        /* Hiệu ứng kính */
+        background: var(--glass-bg);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-radius: 16px;
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+        overflow: hidden;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .group-card:hover {
+        transform: translateY(-10px) scale(1.01);
+        box-shadow: 0 15px 35px rgba(0, 242, 254, 0.15); /* Đổ bóng xanh neon khi hover */
+        border-color: rgba(0, 242, 254, 0.5);
+      }
+
+      .group-header {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 242, 254, 0.8),
+          rgba(189, 0, 255, 0.8)
+        );
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 700;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      /* Hiệu ứng quét sáng trên header nhóm */
+      .group-header::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        animation: shine 4s infinite linear;
+      }
+
+      @keyframes shine {
+        100% {
+          left: 100%;
+        }
+      }
+
+      /* --- Table Styling --- */
+      table {
+        width: 100%;
+        border-collapse: separate; /* Để dùng border-radius cho tr */
+        border-spacing: 0 5px; /* Khoảng cách giữa các dòng */
+        padding: 10px;
+      }
+
+      th {
+        text-align: left;
+        padding: 12px 15px;
+        color: var(--text-light-grey);
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      tbody tr {
+        background: rgba(255, 255, 255, 0.4); /* Nền dòng trong suốt nhẹ */
+        transition: all 0.2s;
+        border-radius: 8px;
+      }
+
+      tbody tr:hover {
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 10px rgba(189, 0, 255, 0.15); /* Glow tím nhẹ khi hover dòng */
+        transform: scale(1.02);
+      }
+
+      td {
+        padding: 15px;
+        border: none;
+        font-size: 0.95rem;
+        color: var(--text-dark);
+      }
+
+      td:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
+      td:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+      /* --- Leader & Deadline Columns --- */
+      .is-leader {
+        color: var(--neon-orange);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1.05rem;
+        text-shadow: 0 0 8px rgba(255, 123, 0, 0.4);
+      }
+
+      .leader-icon {
+        font-size: 1.3rem;
+        animation: pulse 2s infinite;
+        filter: drop-shadow(0 0 5px var(--neon-orange));
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.2);
+          opacity: 0.8;
+        }
+      }
+
+      .deadline-col {
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 600;
+        color: var(--neon-purple);
+        white-space: nowrap;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+        header h1 {
+          font-size: 1.8rem;
+        }
+        .group-card:hover {
+          transform: none;
+        } /* Tắt hover effect trên mobile cho đỡ lag */
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="bg-canvas"></canvas>
+
+    <header>
+      <h1>FPT POLYSCHOOL BÀ RỊA - VŨNG TÀU</h1>
+      <h2>Môn: WEB1013 - Thiết kế Web</h2>
+      <p>Lớp: SD2001 | Quản lý tiến độ dự án</p>
+    </header>
+
+    <div class="container" id="board-container"></div>
+
+    <script>
+      /* =========================================
+           PHẦN 1: JAVASCRIPT CHO HỆ THỐNG BẢNG
+           ========================================= */
+      const groupsData = [
+        {
+          id: 1,
+          name: "NHÓM 1 - web đọc báo",
+          members: [
+            {
+              name: "Nguyễn Chí Tiến",
+              role: "leader",
+              task: "Dựng khung dự án<br><br>Header<br><br>Footer<br><br>Trang chủ",
+              deadline: "10/01/2026",
+            },
+            {
+              name: "Phùng Bảo Bảo",
+              role: "member",
+              task: "Tạo Logo<br><br>Trang Đăng Nhập<br><br>Trang Đăng Ký<br><br>Trang Quên mật khẩu",
+              deadline: "12/01/2026",
+            },
+            {
+              name: "Tô Gia Bảo",
+              role: "member",
+              task: "Trang xem lịch thi đấu<br><br>Trang bài báo Pháp Luật<br><br>Trang bài báo thể thao<br><br>",
+              deadline: "12/01/2026",
+            },
+            {
+              name: "Nguyễn Thanh Hiền",
+              role: "member",
+              task: "Trang báo Tài Chính<br><br>Trang xem âm lịch<br><br>Trang upload bài báo",
+              deadline: "11/01/2026",
+            },
+            {
+              name: "Trần Phúc Huy",
+              role: "member",
+              task: "Trang About Us<br><br>Trang báo bất kỳ có chn2 Video<br><br>...",
+              deadline: "13/01/2026",
+            },
+          ],
+        },
+        {
+          id: 2,
+          name: "Nhóm 2 - Web bán hàng",
+          members: [
+            {
+              name: "Đỗ Đăng Khoa",
+              role: "leader",
+              task: "Tạo khung trang web<br><br>Trang chủ<br><br>Trang Đăng nhập<br><br>Trang Đăng ký",
+              deadline: "15/01/2026",
+            },
+            {
+              name: "Nguyễn Võ Hà Nam",
+              role: "Tạo Logo<br><br>Trang About US<br><br>Trang quên mật khẩu",
+              task: "Frontend trang Sản phẩm",
+              deadline: "14/01/2026",
+            },
+            {
+              name: "Lại Tiến Dũng",
+              role: "member",
+              task: "Header<br><br>Footer<br><br>Trang xem chi tiết sản phẩm",
+              deadline: "14/01/2026",
+            },
+            {
+              name: "Đỗ Gia Phúc",
+              role: "memeber",
+              task: "Trang lọc sản phẩm theo loại<br><br>Trang Upload Sản phẩm",
+              deadline: "13/01/2026",
+            },
+            {
+              name: "Nguyễn Thanh Thông",
+              role: "member",
+              task: "Trang xem giỏ hàng<br><br>Trag xem trạng thái đơn hàng<br><br>Trang Thanh toán",
+              deadline: "13/01/2026",
+            },
+            {
+              name: "Hoàng Đức Trí",
+              role: "member",
+              task: "Trang Flash Sale<br><br>Trang lịch sử mua hàng",
+              deadline: "15/01/2026",
+            },
+          ],
+        },
+        {
+          id: 3,
+          name: "Nhóm 3 - Web bán đồ thể thao",
+          members: [
+            {
+              name: "Nguyễn Thiện Nhân",
+              role: "leader",
+              task: "Tạo khung trang web<br><br>Trang chủ<br><br>Trang Đăng nhập<br><br>Trang Đăng ký",
+              deadline: "15/01/2026",
+            },
+            {
+              name: "Lê Hoàng Minh",
+              role: "memeber",
+              task: "Tạo Logo<br><br>Trang About US<br><br>Trang quên mật khẩu",
+              deadline: "14/01/2026",
+            },
+            {
+              name: "Nguyễn Đức Minh Khôi",
+              role: "member",
+              task: "Header<br><br>Footer<br><br>Trang xem chi tiết sản phẩm",
+              deadline: "14/01/2026",
+            },
+            {
+              name: "Phạm Gia Hưng",
+              role: "memeber",
+              task: "Trang lọc sản phẩm theo loại<br><br>Trang Upload Sản phẩm<br><br>Trang thông tin cá nhân",
+              deadline: "13/01/2026",
+            },
+            {
+              name: "Nguyễn Thành Đạt",
+              role: "member",
+              task: "Trang xem giỏ hàng<br><br>Trag xem trạng thái đơn hàng<br><br>Trang Thanh toán",
+              deadline: "13/01/2026",
+            },
+          ],
+        },
+        {
+          id: 4,
+          name: "Web xem phim",
+          members: [
+            {
+              name: "Tạ Hoàng Kim Châu",
+              role: "leader",
+              task: "Dựng khung project<br><br>Header<br><br>Footer<br><br>Trang chủ",
+              deadline: "09/01/2026",
+            },
+            {
+              name: "Trương CÔng Quốc Khánh",
+              role: "member",
+              task: "Trang Đăng nhập<br><br>Trang Đăng ký<br><br>Trang quên mật khẩu<br><br>Trang chi tiết phim",
+              deadline: "12/01/2026",
+            },
+            {
+              name: "Tòng Lê Minh Hậu",
+              role: "member",
+              task: "Trang About US<br><br>Trang Thể loại phim",
+              deadline: "12/01/2026",
+            },
+            {
+              name: "Nguyễn Ngọc Nguyên",
+              role: "member",
+              task: "Trang mua gói<br><br>Trang Thanh Toán",
+              deadline: "16/01/2026",
+            },
+            {
+              name: "Nguyễn Quí Đỉnh",
+              role: "member",
+              task: "Trang Thông tin cá nhân",
+              deadline: "16/01/2026",
+            },
+          ],
+        },
+      ];
+
+      function renderBoard() {
+        const container = document.getElementById("board-container");
+        let htmlContent = "";
+
+        groupsData.forEach((group) => {
+          let rows = "";
+          group.members.forEach((mem) => {
+            const nameDisplay =
+              mem.role === "leader"
+                ? `<span class="is-leader"><span class="leader-icon">⚡</span> ${mem.name}</span>`
+                : `<span>${mem.name}</span>`;
+
+            rows += `
+                        <tr>
+                            <td>${nameDisplay}</td>
+                            <td>${mem.task}</td>
+                            <td class="deadline-col">${mem.deadline}</td>
+                        </tr>
+                    `;
+          });
+
+          htmlContent += `
+                    <div class="group-card">
+                        <div class="group-header">${group.name}</div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="35%">Thành viên</th>
+                                    <th width="45%">Đầu việc (Task)</th>
+                                    <th width="20%">Deadline</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${rows}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+        });
+
+        container.innerHTML = htmlContent;
+      }
+
+      renderBoard();
+
+      /* =========================================
+           PHẦN 2: JAVASCRIPT CHO NỀN CHUYỂN ĐỘNG (CANVAS)
+           ========================================= */
+      const canvas = document.getElementById("bg-canvas");
+      const ctx = canvas.getContext("2d");
+      let particlesArray;
+
+      // Thiết lập kích thước canvas full màn hình
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          // Hạt di chuyển chậm
+          this.directionX = Math.random() * 0.4 - 0.2;
+          this.directionY = Math.random() * 0.4 - 0.2;
+          // Màu sắc hạt ngẫu nhiên giữa Xanh và Tím nhạt
+          this.color =
+            Math.random() > 0.5
+              ? "rgba(0, 242, 254, 0.5)"
+              : "rgba(189, 0, 255, 0.5)";
+          this.size = Math.random() * 3 + 1;
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+
+        update() {
+          // Đảo hướng khi chạm cạnh màn hình
+          if (this.x > canvas.width || this.x < 0) {
+            this.directionX = -this.directionX;
+          }
+          if (this.y > canvas.height || this.y < 0) {
+            this.directionY = -this.directionY;
+          }
+          this.x += this.directionX;
+          this.y += this.directionY;
+          this.draw();
+        }
+      }
+
+      function init() {
+        particlesArray = [];
+        // Số lượng hạt tùy thuộc vào kích thước màn hình
+        let numberOfParticles = (canvas.height * canvas.width) / 15000;
+        for (let i = 0; i < numberOfParticles; i++) {
+          particlesArray.push(new Particle());
+        }
+      }
+
+      // Vẽ các đường nối giữa các hạt gần nhau
+      function connect() {
+        let opacityValue = 1;
+        for (let a = 0; a < particlesArray.length; a++) {
+          for (let b = a; b < particlesArray.length; b++) {
+            let distance =
+              (particlesArray[a].x - particlesArray[b].x) *
+                (particlesArray[a].x - particlesArray[b].x) +
+              (particlesArray[a].y - particlesArray[b].y) *
+                (particlesArray[a].y - particlesArray[b].y);
+            // Nếu khoảng cách đủ gần thì vẽ đường nối
+            if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+              opacityValue = 1 - distance / 20000;
+              ctx.strokeStyle =
+                "rgba(180, 180, 220," + opacityValue * 0.2 + ")"; // Đường nối màu xám xanh rất nhạt
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+              ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particlesArray.length; i++) {
+          particlesArray[i].update();
+        }
+        connect();
+      }
+
+      // Xử lý khi resize cửa sổ
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        init();
+      });
+
+      // Bắt đầu hiệu ứng nền
+      init();
+      animate();
+    </script>
+  </body>
+</html>
