@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - SportZone</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+  </head>
+  <body>
+    <!-- Header: Same header as home page -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <span class="logo-icon">⚡</span>
+            <a href="../index.html" class="logo-text">SportZone</a>
+          </div>
+
+          <nav class="nav">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#products" class="nav-link">Products</a>
+            <a href="../index.html#about" class="nav-link">About</a>
+            <a href="../index.html#contact" class="nav-link">Contact</a>
+          </nav>
+
+          <div class="header-actions">
+            <a href="login.html" class="btn btn-outline">Login</a>
+            <a href="register.html" class="btn btn-primary">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content: Login Form -->
+    <main class="main-content">
+      <div class="auth-page">
+        <div class="auth-container">
+          <div class="auth-card">
+            <!-- Login Header -->
+            <div class="auth-header">
+              <h1>Welcome Back</h1>
+              <p>Sign in to your account to continue shopping</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form">
+              <!-- Email Input -->
+              <div class="form-group">
+                <label for="email" class="form-label">
+                  Email Address <span class="required">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="Enter your email"
+                  required
+                />
+                <span class="error-message" id="emailError"></span>
+              </div>
+
+              <!-- Password Input -->
+              <div class="form-group">
+                <label for="password" class="form-label">
+                  Password <span class="required">*</span>
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-input"
+                  placeholder="Enter your password"
+                  required
+                />
+                <span class="error-message" id="passwordError"></span>
+              </div>
+
+              <!-- Form Options -->
+              <div class="form-options">
+                <label class="checkbox-label">
+                  <input type="checkbox" />
+                  <span>Remember me</span>
+                </label>
+                <a href="#" class="forgot-link">Forgot password?</a>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary btn-block">
+                Sign In
+              </button>
+            </form>
+
+            <!-- Footer: Link to register page -->
+            <div class="auth-footer">
+              <p>
+                Don't have an account?
+                <a href="register.html" class="auth-link">Sign up here</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer: Same footer as home page -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">SportZone</h3>
+            <p class="footer-description">
+              Your ultimate destination for premium sports equipment and
+              athletic gear.
+            </p>
+          </div>
+
+          <div class="footer-section">
+            <h4 class="footer-heading">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../index.html#products">Products</a></li>
+              <li><a href="../index.html#about">About Us</a></li>
+              <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4 class="footer-heading">Contact</h4>
+            <ul class="footer-links">
+              <li>Email: info@sportzone.com</li>
+              <li>Phone: +1 (555) 123-4567</li>
+              <li>Address: 123 Sports St, City, State 12345</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2024 SportZone. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript: Form validation and submission -->
+    <script src="../js/main.js"></script>
+    <script src="../js/login.js"></script>
+  </body>
+</html>

@@ -1,3 +1,10 @@
+/* ============================================
+   AUTH PAGES STYLES (LOGIN & REGISTER)
+   ============================================
+   Shared styles for login and register pages
+   ============================================ */
+
+/* Auth Page Container */
 .auth-page {
   min-height: calc(100vh - 200px);
   display: flex;
@@ -12,25 +19,15 @@
   max-width: 500px;
 }
 
+/* Auth Card: White card containing the form */
 .auth-card {
   background-color: var(--white);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
-  box-shadow: var(--shadow-xl);
-  animation: slideUp 0.5s ease;
+  box-shadow: var(--shadow-lg);
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Auth Header: Title and description */
 .auth-header {
   text-align: center;
   margin-bottom: var(--spacing-xl);
@@ -49,16 +46,65 @@
   font-size: 0.95rem;
 }
 
+/* Form Styles */
 .auth-form {
   margin-bottom: var(--spacing-lg);
 }
 
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  color: var(--black);
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.95rem;
+}
+
+.required {
+  color: var(--error);
+  margin-left: 2px;
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 2px solid var(--gray);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.form-input.error {
+  border-color: var(--error);
+}
+
+/* Form Row: For side-by-side inputs (e.g., First Name and Last Name) */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-md);
 }
 
+/* Error Message: Display validation errors */
+.error-message {
+  display: block;
+  color: var(--error);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+  min-height: 20px;
+}
+
+/* Form Options: Checkbox and links */
 .form-options {
   display: flex;
   justify-content: space-between;
@@ -84,15 +130,11 @@
   accent-color: var(--primary);
 }
 
-.checkbox-label a {
-  color: var(--primary);
-  text-decoration: underline;
-}
-
 .forgot-link {
   color: var(--primary);
   font-size: 0.9rem;
   font-weight: 500;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
@@ -100,20 +142,7 @@
   color: var(--primary-dark);
 }
 
-.btn-block {
-  width: 100%;
-  padding: var(--spacing-md);
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-top: var(--spacing-sm);
-}
-
-.btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
+/* Auth Footer: Link to other auth page */
 .auth-footer {
   text-align: center;
   padding-top: var(--spacing-md);
@@ -128,6 +157,7 @@
 .auth-link {
   color: var(--primary);
   font-weight: 600;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
@@ -136,7 +166,7 @@
   text-decoration: underline;
 }
 
-/* Responsive */
+/* Responsive Design for Auth Pages */
 @media (max-width: 768px) {
   .auth-card {
     padding: var(--spacing-lg);

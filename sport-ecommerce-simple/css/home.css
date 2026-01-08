@@ -1,4 +1,13 @@
-/* Hero Section */
+/* ============================================
+   HOME PAGE STYLES
+   ============================================
+   Styles specific to the home page:
+   - Hero section (banner)
+   - Featured products
+   - Features section
+   ============================================ */
+
+/* Hero Section: Sport-themed banner at the top */
 .hero {
   position: relative;
   height: 600px;
@@ -6,8 +15,7 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
-  background-image: url("https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&h=1080&fit=crop"),
-    linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+  background-image: url("https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&h=1080&fit=crop");
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
@@ -35,18 +43,6 @@
   text-align: center;
   max-width: 800px;
   padding: var(--spacing-lg);
-  animation: fadeInUp 0.8s ease;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .hero-title {
@@ -76,11 +72,6 @@
   flex-wrap: wrap;
 }
 
-.btn-large {
-  padding: var(--spacing-md) var(--spacing-xl);
-  font-size: 1.1rem;
-}
-
 /* Featured Products Section */
 .featured-products {
   padding: var(--spacing-2xl) 0;
@@ -104,13 +95,14 @@
   color: var(--dark-gray);
 }
 
+/* Products Grid: Responsive grid layout */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-xl);
 }
 
+/* Product Card: Individual product display */
 .product-card {
   background-color: var(--white);
   border-radius: var(--radius-lg);
@@ -123,7 +115,7 @@
 
 .product-card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-lg);
 }
 
 .product-image {
@@ -143,24 +135,6 @@
 
 .product-card:hover .product-image img {
   transform: scale(1.1);
-}
-
-.product-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.product-card:hover .product-overlay {
-  opacity: 1;
 }
 
 .product-category {
@@ -201,16 +175,11 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary);
-  font-family: var(--font-heading);
 }
 
 .btn-small {
   padding: var(--spacing-xs) var(--spacing-md);
   font-size: 0.9rem;
-}
-
-.section-footer {
-  text-align: center;
 }
 
 /* Features Section */
@@ -254,7 +223,7 @@
   color: var(--dark-gray);
 }
 
-/* Responsive */
+/* Responsive Design for Home Page */
 @media (max-width: 968px) {
   .hero-title {
     font-size: 2.5rem;
