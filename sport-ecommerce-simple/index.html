@@ -81,7 +81,8 @@
           <div class="footer-section">
             <h3 class="footer-title">SportZone</h3>
             <p class="footer-description">
-              Điểm đến hàng đầu cho thiết bị thể thao cao cấp và dụng cụ thể thao.
+              Điểm đến hàng đầu cho thiết bị thể thao cao cấp và dụng cụ thể
+              thao.
             </p>
           </div>
 
@@ -119,7 +120,7 @@
       function kiemTraDangNhap() {
         // Lấy trạng thái đăng nhập từ localStorage
         var trangThai = localStorage.getItem("trangThai");
-        
+
         // Lấy tên người dùng từ localStorage (đã lưu khi đăng ký)
         var ten = localStorage.getItem("username");
 
@@ -145,10 +146,10 @@
       function dangXuat() {
         // Xóa trạng thái đăng nhập khỏi localStorage
         localStorage.removeItem("trangThai");
-        
+
         // Hiển thị thông báo
         alert("Xin chào hẹn gặp lại!");
-        
+
         // Tải lại trang để cập nhật giao diện
         window.location.reload();
       }
