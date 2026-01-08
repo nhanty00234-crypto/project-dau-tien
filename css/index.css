@@ -99,9 +99,11 @@ button {
 button:hover {
   background-color: rgb(150, 150, 136);
 }
-.btn-dangXuat {
+
+.btn-dangxuat {
   background: linear-gradient(to top right, red, transparent);
 }
+
 .btn-dangnhap {
   height: 50%;
   width: 200%;

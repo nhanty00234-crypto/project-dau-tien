@@ -10,9 +10,10 @@
     <script>
       var trangThai = localStorage.getItem("trangThai");
       if (trangThai == "daDangNhap") {
-        window.localStorage.href = "index.html";
+        window.location.href = "index.html";
       }
     </script>
+
     <div class="khungdangnhap">
       <div class="div1">
         <img src="images/logo.png" alt="" />
@@ -45,24 +46,24 @@
       </div>
 
       <div class="div7">
-        <button onclick="dangNhap();">ĐĂNG NHẬP</button>
+        <button onclick="dangnhap();">ĐĂNG NHẬP</button>
       </div>
     </div>
 
     <script>
-      function dangNhap() {
+      function dangnhap() {
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
 
-        var taiKhoanHeThong = localStorage.getItem("username");
+        var taiKhoangHeThong = localStorage.getItem("username");
         var matKhauHeThong = localStorage.getItem("password");
 
-        if (username == taiKhoanHeThong && password == matKhauHeThong) {
-          alert("Dang nhap thanh cong");
+        if (username == taiKhoangHeThong && password == matKhauHeThong) {
+          alert("Đăng nhap thành công");
           localStorage.setItem("trangThai", "daDangNhap");
           window.location.href = "index.html";
-        } else if (username != taiKhoanHeThong || password != matKhauHeThong) {
-          alert("Sai tk hoac mk");
+        } else if (username != taiKhoangHeThong || password != matKhauHeThong) {
+          alert("Sai tk hoặc mk");
         }
       }
     </script>

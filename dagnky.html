@@ -12,13 +12,14 @@
         <img src="images/logo.png" alt="" />
       </div>
       <div class="div2">
-        <h1>Đăng ký</h1>
+        <h1>ĐĂNG KÝ</h1>
       </div>
+
+      <form action=""></form>
 
       <div class="div4">
         <h4>Username</h4>
       </div>
-
       <div class="div3">
         <input id="username" type="text" placeholder="Nhập username" />
       </div>
@@ -29,36 +30,38 @@
       <div class="div3">
         <input id="mk" type="password" placeholder="Nhập password" />
       </div>
+
       <div class="div4">
         <h4>Xác nhận password</h4>
       </div>
 
       <div class="div3">
-        <input id="xnmk" type="password" placeholder="Xac nhan  password" />
+        <input id="xnmk" type="password" placeholder="Xác nhận password" />
       </div>
 
       <div class="div7">
-        <button onclick="dangKy();">ĐĂNG KÝ</button>
+        <button onclick="dangky();">ĐĂNG KÝ</button>
       </div>
     </div>
-  </body>
-  <!-- js -->
-  <script>
-    // CODE JS(javascript)
-    //Hàm trong JS
-    function dangKy() {
-      var tenDangNhap = document.getElementById("username").value;
-      var matKhau = document.getElementById("mk").value;
-      var xacNhanMatKhau = document.getElementById("xnmk").value;
-      if (tenDangNhap == "" || matKhau == "" || xacNhanMatKhau == "") {
-        alert("VUi long nhap username");
-      } else if (matKhau != xacNhanMatKhau) {
-        alert("Xac nhan mat khau khong khop! ");
-      } else {
-        localStorage.setItem("username", tenDangNhap);
-        localStorage.setItem("password", matKhau);
-        window.location.href = "dangnhap.html";
+
+    <script>
+      //Code JS (Javascript)
+      //Hàm trong JS
+
+      function dangky() {
+        var tendangnhap = document.getElementById("username").value;
+        var matkhau = document.getElementById("mk").value;
+        var xacnhanmatkhau = document.getElementById("xnmk").value;
+        if (tendangnhap == "" || matkhau == "" || xacnhanmatkhau == "") {
+          alert("Vui lòng nhập đủ thông tin");
+        } else if (matkhau != xacnhanmatkhau) {
+          alert("Xác nhận mật khẩu không khớp!");
+        } else {
+          localStorage.setItem("username", tendangnhap);
+          localStorage.setItem("password", matkhau);
+          window.location.href = "dangnhap.html";
+        }
       }
-    }
-  </script>
+    </script>
+  </body>
 </html>

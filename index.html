@@ -17,7 +17,7 @@
         <a href="">Phim lẻ</a>
         <a href="">Anime</a>
       </div>
-      <div id="dangNhapDangKy" class="dangnhapdangky"></div>
+      <div id="dangnhapdangky" class="dangnhapdangky"></div>
     </header>
 
     <div class="mainMenu">
@@ -51,22 +51,25 @@
         </p>
       </div>
     </div>
+
     <script>
-      function dangXuat() {
+      function dangxuat() {
         localStorage.removeItem("trangThai");
-        alert("Xin chào hẹn gặp lại! ");
+        alert("Xin chào hẹn gặp lại!");
         window.location.href = "dangnhap.html";
       }
 
-      var trangThai = localStorage.getItem("trangThai");
-      if (trangThai == "daDangNhap") {
-        document.getElementById("dangNhapDangKy").innerHTML =
-          "<h1> Xin chao " +
+      var trangthai = localStorage.getItem("trangThai");
+      if (trangthai == "daDangNhap") {
+        var ten = localStorage.getItem("username");
+
+        document.getElementById("dangnhapdangky").innerHTML =
+          "<h1>Xin chào " +
           ten +
-          '<h1>Xin chào Thiện Nhân</h1> <button class="btn-dangXuat" onclick="dangXuat();">Đăng xuất</button>';
+          '</h1><button class="btn-dangxuat" onclick="dangxuat();">Đăng xuất</button>';
       } else {
-        document.getElementById("dangNhapDangKy").innerHTML =
-          '<a href="dangnhap.html" class="theadangnhap"><button class="btn-dangnhap">Đăng nhập</button></a><a href="dangky.html  " class="theadangnhap"><button class="btn-dangnhap">Đăng ký</button></a>';
+        document.getElementById("dangnhapdangky").innerHTML =
+          ' <a href="dangnhap.html" class="theadangnhap"><button class="btn-dangnhap">Đăng nhập</button></a><a href="dagnky.html" class="theadangnhap"><button class="btn-dangnhap">Đăng ký</button></a>';
       }
     </script>
   </body>
