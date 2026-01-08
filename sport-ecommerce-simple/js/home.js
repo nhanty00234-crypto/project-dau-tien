@@ -143,4 +143,3 @@ function createProductCard(product) {
 
   return card;
 }
-

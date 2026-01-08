@@ -150,17 +150,13 @@ function validateEmail(email) {
 function validatePassword(password) {
   // Check if empty
   if (!password || password.trim() === "") {
-    showError("password", "passwordError", "Password is required");
+    showError("password", "passwordError", "Mật khẩu là bắt buộc");
     return false;
   }
 
   // Check minimum length
   if (password.length < 8) {
-    showError(
-      "password",
-      "passwordError",
-      "Password must be at least 8 characters"
-    );
+    showError("password", "passwordError", "Mật khẩu phải có ít nhất 8 ký tự");
     return false;
   }
 
@@ -181,18 +177,14 @@ function validateConfirmPassword(confirmPassword, password) {
     showError(
       "confirmPassword",
       "confirmPasswordError",
-      "Please confirm your password"
+      "Vui lòng xác nhận mật khẩu"
     );
     return false;
   }
 
   // Check if passwords match
   if (confirmPassword !== password) {
-    showError(
-      "confirmPassword",
-      "confirmPasswordError",
-      "Passwords do not match"
-    );
+    showError("confirmPassword", "confirmPasswordError", "Mật khẩu không khớp");
     return false;
   }
 
@@ -217,8 +209,8 @@ function handleRegisterSubmit(e) {
   const terms = document.getElementById("terms").checked;
 
   // Validate all fields
-  const isFirstNameValid = validateName(firstName, "firstName", "First name");
-  const isLastNameValid = validateName(lastName, "lastName", "Last name");
+  const isFirstNameValid = validateName(firstName, "firstName", "Họ");
+  const isLastNameValid = validateName(lastName, "lastName", "Tên");
   const isEmailValid = validateEmail(email);
   const isPasswordValid = validatePassword(password);
   const isConfirmPasswordValid = validateConfirmPassword(
@@ -228,7 +220,7 @@ function handleRegisterSubmit(e) {
 
   // Check terms checkbox
   if (!terms) {
-    alert("Please agree to the Terms & Conditions");
+    alert("Vui lòng đồng ý với Điều Khoản & Điều Kiện");
     return;
   }
 
@@ -253,8 +245,8 @@ function handleRegisterSubmit(e) {
   // In a real application, you would send this data to a server
   // For now, we'll just show a success message
   alert(
-    "Registration successful! Welcome to SportZone!\n\n" +
-      "Name: " +
+    "Đăng ký thành công! Chào mừng đến với SportZone!\n\n" +
+      "Họ tên: " +
       firstName +
       " " +
       lastName +
@@ -262,7 +254,7 @@ function handleRegisterSubmit(e) {
       "Email: " +
       email +
       "\n\n" +
-      "(This is a demo)"
+      "(Đây là bản demo)"
   );
 
   // In a real app, you might redirect to login page:

@@ -92,11 +92,7 @@ function validatePassword(password) {
 
   // Check minimum length
   if (password.length < 6) {
-    showError(
-      "password",
-      "passwordError",
-      "Mật khẩu phải có ít nhất 6 ký tự"
-    );
+    showError("password", "passwordError", "Mật khẩu phải có ít nhất 6 ký tự");
     return false;
   }
 
@@ -131,7 +127,7 @@ function handleLoginSubmit(e) {
   // In a real application, you would send this data to a server
   // For now, we'll just show a success message
   alert("Đăng nhập thành công! (Đây là bản demo)\n\nEmail: " + email);
-  
+
   // In a real app, you might redirect to home page:
   // window.location.href = "../index.html";
 }
