@@ -13,47 +13,47 @@
 const products = [
   {
     id: 1,
-    name: "Pro Running Shoes",
+    name: "Giày Chạy Bộ Chuyên Nghiệp",
     price: 129.99,
     image:
       "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop",
-    category: "Running",
+    category: "Chạy Bộ",
   },
   {
     id: 2,
-    name: "Basketball Pro",
+    name: "Bóng Rổ Chuyên Nghiệp",
     price: 89.99,
     image:
       "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400&h=400&fit=crop",
-    category: "Basketball",
+    category: "Bóng Rổ",
   },
   {
     id: 3,
-    name: "Training Gloves",
+    name: "Găng Tay Tập Luyện",
     price: 34.99,
     image:
       "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop",
-    category: "Fitness",
+    category: "Thể Hình",
   },
   {
     id: 4,
-    name: "Football Jersey",
+    name: "Áo Đấu Bóng Đá",
     price: 59.99,
     image:
       "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=400&fit=crop",
-    category: "Football",
+    category: "Bóng Đá",
   },
   {
     id: 5,
-    name: "Yoga Mat Premium",
+    name: "Thảm Yoga Cao Cấp",
     price: 44.99,
     image:
       "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=400&h=400&fit=crop",
-    category: "Fitness",
+    category: "Thể Hình",
   },
   {
     id: 6,
-    name: "Tennis Racket",
+    name: "Vợt Tennis",
     price: 149.99,
     image:
       "https://images.unsplash.com/photo-1622163642999-9586b0f8b0a5?w=400&h=400&fit=crop",
@@ -130,15 +130,9 @@ function createProductCard(product) {
 
   const price = document.createElement("span");
   price.className = "product-price";
-  price.textContent = `$${product.price.toFixed(2)}`;
-
-  const addToCartBtn = document.createElement("button");
-  addToCartBtn.className = "btn btn-secondary btn-small";
-  addToCartBtn.textContent = "Add to Cart";
-  addToCartBtn.addEventListener("click", () => handleAddToCart(product));
+  price.textContent = `${product.price.toFixed(0)}.000đ`;
 
   footer.appendChild(price);
-  footer.appendChild(addToCartBtn);
 
   infoSection.appendChild(name);
   infoSection.appendChild(footer);
@@ -150,15 +144,3 @@ function createProductCard(product) {
   return card;
 }
 
-/**
- * Handle Add to Cart: Process when user clicks "Add to Cart"
- * @param {Object} product - Product data object
- */
-function handleAddToCart(product) {
-  // In a real application, this would add to a shopping cart
-  // For now, we'll just show an alert
-  alert(
-    `Added "${product.name}" to cart!\nPrice: $${product.price.toFixed(2)}`
-  );
-  console.log("Product added to cart:", product);
-}

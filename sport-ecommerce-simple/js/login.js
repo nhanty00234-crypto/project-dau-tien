@@ -63,13 +63,13 @@ function setupFormValidation() {
 function validateEmail(email) {
   // Check if empty
   if (!email || email.trim() === "") {
-    showError("email", "emailError", "Email is required");
+    showError("email", "emailError", "Email là bắt buộc");
     return false;
   }
 
   // Check email format
   if (!isValidEmail(email)) {
-    showError("email", "emailError", "Please enter a valid email address");
+    showError("email", "emailError", "Vui lòng nhập địa chỉ email hợp lệ");
     return false;
   }
 
@@ -86,7 +86,7 @@ function validateEmail(email) {
 function validatePassword(password) {
   // Check if empty
   if (!password || password.trim() === "") {
-    showError("password", "passwordError", "Password is required");
+    showError("password", "passwordError", "Mật khẩu là bắt buộc");
     return false;
   }
 
@@ -95,7 +95,7 @@ function validatePassword(password) {
     showError(
       "password",
       "passwordError",
-      "Password must be at least 6 characters"
+      "Mật khẩu phải có ít nhất 6 ký tự"
     );
     return false;
   }
@@ -130,8 +130,8 @@ function handleLoginSubmit(e) {
 
   // In a real application, you would send this data to a server
   // For now, we'll just show a success message
-  alert("Login successful! (This is a demo)\n\nEmail: " + email);
-
+  alert("Đăng nhập thành công! (Đây là bản demo)\n\nEmail: " + email);
+  
   // In a real app, you might redirect to home page:
   // window.location.href = "../index.html";
 }

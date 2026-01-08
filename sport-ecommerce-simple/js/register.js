@@ -36,7 +36,7 @@ function setupFormValidation() {
   // Validate first name on blur
   if (firstNameInput) {
     firstNameInput.addEventListener("blur", function () {
-      validateName(firstNameInput.value, "firstName", "First name");
+      validateName(firstNameInput.value, "firstName", "Họ");
     });
     firstNameInput.addEventListener("input", function () {
       clearError("firstName", "firstNameError");
@@ -46,7 +46,7 @@ function setupFormValidation() {
   // Validate last name on blur
   if (lastNameInput) {
     lastNameInput.addEventListener("blur", function () {
-      validateName(lastNameInput.value, "lastName", "Last name");
+      validateName(lastNameInput.value, "lastName", "Tên");
     });
     lastNameInput.addEventListener("input", function () {
       clearError("lastName", "lastNameError");
@@ -100,7 +100,7 @@ function setupFormValidation() {
 function validateName(name, fieldId, fieldLabel) {
   // Check if empty
   if (!name || name.trim() === "") {
-    showError(fieldId, fieldId + "Error", fieldLabel + " is required");
+    showError(fieldId, fieldId + "Error", fieldLabel + " là bắt buộc");
     return false;
   }
 
@@ -109,7 +109,7 @@ function validateName(name, fieldId, fieldLabel) {
     showError(
       fieldId,
       fieldId + "Error",
-      fieldLabel + " must be at least 2 characters"
+      fieldLabel + " phải có ít nhất 2 ký tự"
     );
     return false;
   }
@@ -127,13 +127,13 @@ function validateName(name, fieldId, fieldLabel) {
 function validateEmail(email) {
   // Check if empty
   if (!email || email.trim() === "") {
-    showError("email", "emailError", "Email is required");
+    showError("email", "emailError", "Email là bắt buộc");
     return false;
   }
 
   // Check email format
   if (!isValidEmail(email)) {
-    showError("email", "emailError", "Please enter a valid email address");
+    showError("email", "emailError", "Vui lòng nhập địa chỉ email hợp lệ");
     return false;
   }
 

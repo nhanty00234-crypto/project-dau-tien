@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register - SportZone</title>
+    <title>Đăng Ký - SportZone</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/auth.css" />
   </head>
   <body>
-    <!-- Header: Same header as home page -->
+    <!-- Header: Giống header trang chủ -->
     <header class="header">
       <div class="container">
         <div class="header-content">
@@ -18,47 +18,45 @@
           </div>
 
           <nav class="nav">
-            <a href="../index.html" class="nav-link">Home</a>
-            <a href="../index.html#products" class="nav-link">Products</a>
-            <a href="../index.html#about" class="nav-link">About</a>
-            <a href="../index.html#contact" class="nav-link">Contact</a>
+            <a href="../index.html" class="nav-link">Trang Chủ</a>
+            <a href="../index.html#products" class="nav-link">Sản Phẩm</a>
           </nav>
 
           <div class="header-actions">
-            <a href="login.html" class="btn btn-outline">Login</a>
-            <a href="register.html" class="btn btn-primary">Sign Up</a>
+            <a href="login.html" class="btn btn-outline">Đăng Nhập</a>
+            <a href="register.html" class="btn btn-primary">Đăng Ký</a>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Main Content: Register Form -->
+    <!-- Nội Dung Chính: Form Đăng Ký -->
     <main class="main-content">
       <div class="auth-page">
         <div class="auth-container">
           <div class="auth-card">
-            <!-- Register Header -->
+            <!-- Tiêu Đề Đăng Ký -->
             <div class="auth-header">
-              <h1>Create Account</h1>
+              <h1>Tạo Tài Khoản</h1>
               <p>
-                Join SportZone and start shopping for premium sports equipment
+                Tham gia SportZone và bắt đầu mua sắm thiết bị thể thao cao cấp
               </p>
             </div>
 
-            <!-- Register Form -->
+            <!-- Form Đăng Ký -->
             <form id="registerForm" class="auth-form">
-              <!-- Name Inputs (First Name and Last Name in a row) -->
+              <!-- Nhập Tên (Họ và Tên trong một hàng) -->
               <div class="form-row">
                 <div class="form-group">
                   <label for="firstName" class="form-label">
-                    First Name <span class="required">*</span>
+                    Họ <span class="required">*</span>
                   </label>
                   <input
                     type="text"
                     id="firstName"
                     name="firstName"
                     class="form-input"
-                    placeholder="Enter your first name"
+                    placeholder="Nhập họ của bạn"
                     required
                   />
                   <span class="error-message" id="firstNameError"></span>
@@ -66,87 +64,87 @@
 
                 <div class="form-group">
                   <label for="lastName" class="form-label">
-                    Last Name <span class="required">*</span>
+                    Tên <span class="required">*</span>
                   </label>
                   <input
                     type="text"
                     id="lastName"
                     name="lastName"
                     class="form-input"
-                    placeholder="Enter your last name"
+                    placeholder="Nhập tên của bạn"
                     required
                   />
                   <span class="error-message" id="lastNameError"></span>
                 </div>
               </div>
 
-              <!-- Email Input -->
+              <!-- Nhập Email -->
               <div class="form-group">
                 <label for="email" class="form-label">
-                  Email Address <span class="required">*</span>
+                  Địa Chỉ Email <span class="required">*</span>
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   class="form-input"
-                  placeholder="Enter your email"
+                  placeholder="Nhập email của bạn"
                   required
                 />
                 <span class="error-message" id="emailError"></span>
               </div>
 
-              <!-- Password Input -->
+              <!-- Nhập Mật Khẩu -->
               <div class="form-group">
                 <label for="password" class="form-label">
-                  Password <span class="required">*</span>
+                  Mật Khẩu <span class="required">*</span>
                 </label>
                 <input
                   type="password"
                   id="password"
                   name="password"
                   class="form-input"
-                  placeholder="Create a password"
+                  placeholder="Tạo mật khẩu"
                   required
                 />
                 <span class="error-message" id="passwordError"></span>
               </div>
 
-              <!-- Confirm Password Input -->
+              <!-- Xác Nhận Mật Khẩu -->
               <div class="form-group">
                 <label for="confirmPassword" class="form-label">
-                  Confirm Password <span class="required">*</span>
+                  Xác Nhận Mật Khẩu <span class="required">*</span>
                 </label>
                 <input
                   type="password"
                   id="confirmPassword"
                   name="confirmPassword"
                   class="form-input"
-                  placeholder="Confirm your password"
+                  placeholder="Xác nhận mật khẩu của bạn"
                   required
                 />
                 <span class="error-message" id="confirmPasswordError"></span>
               </div>
 
-              <!-- Terms Checkbox -->
+              <!-- Checkbox Điều Khoản -->
               <div class="form-options">
                 <label class="checkbox-label">
                   <input type="checkbox" id="terms" required />
-                  <span>I agree to the Terms & Conditions</span>
+                  <span>Tôi đồng ý với Điều Khoản & Điều Kiện</span>
                 </label>
               </div>
 
-              <!-- Submit Button -->
+              <!-- Nút Gửi -->
               <button type="submit" class="btn btn-primary btn-block">
-                Create Account
+                Tạo Tài Khoản
               </button>
             </form>
 
-            <!-- Footer: Link to login page -->
+            <!-- Footer: Liên kết đến trang đăng nhập -->
             <div class="auth-footer">
               <p>
-                Already have an account?
-                <a href="login.html" class="auth-link">Sign in here</a>
+                Đã có tài khoản?
+                <a href="login.html" class="auth-link">Đăng nhập tại đây</a>
               </p>
             </div>
           </div>
@@ -154,45 +152,42 @@
       </div>
     </main>
 
-    <!-- Footer: Same footer as home page -->
+    <!-- Footer: Giống footer trang chủ -->
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
           <div class="footer-section">
             <h3 class="footer-title">SportZone</h3>
             <p class="footer-description">
-              Your ultimate destination for premium sports equipment and
-              athletic gear.
+              Điểm đến hàng đầu cho thiết bị thể thao cao cấp và dụng cụ thể thao.
             </p>
           </div>
 
           <div class="footer-section">
-            <h4 class="footer-heading">Quick Links</h4>
+            <h4 class="footer-heading">Liên Kết Nhanh</h4>
             <ul class="footer-links">
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="../index.html#products">Products</a></li>
-              <li><a href="../index.html#about">About Us</a></li>
-              <li><a href="../index.html#contact">Contact</a></li>
+              <li><a href="../index.html">Trang Chủ</a></li>
+              <li><a href="../index.html#products">Sản Phẩm</a></li>
             </ul>
           </div>
 
           <div class="footer-section">
-            <h4 class="footer-heading">Contact</h4>
+            <h4 class="footer-heading">Liên Hệ</h4>
             <ul class="footer-links">
               <li>Email: info@sportzone.com</li>
-              <li>Phone: +1 (555) 123-4567</li>
-              <li>Address: 123 Sports St, City, State 12345</li>
+              <li>Điện thoại: 0123 456 789</li>
+              <li>Địa chỉ: 123 Đường Thể Thao, Thành phố</li>
             </ul>
           </div>
         </div>
 
         <div class="footer-bottom">
-          <p>&copy; 2024 SportZone. All rights reserved.</p>
+          <p>&copy; 2024 SportZone. Bảo lưu mọi quyền.</p>
         </div>
       </div>
     </footer>
 
-    <!-- JavaScript: Form validation and submission -->
+    <!-- JavaScript: Xác thực và gửi form -->
     <script src="../js/main.js"></script>
     <script src="../js/register.js"></script>
   </body>
