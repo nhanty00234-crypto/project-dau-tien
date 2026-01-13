@@ -117,7 +117,7 @@ button:hover {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  background-image: url(../images/attack-on-titan-epic-battle-red-desktop-wallpaper-preview.jpg);
+  background-image: url(../images/personaje-satoru-gojo-jujutsu-kaisen-7799.webp);
 }
 
 .poster {
@@ -278,4 +278,40 @@ button:hover {
   justify-content: center;
   visibility: visible;
   transition: ease-in-out 1s;
+}
+.menucon {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+}
+
+.comp {
+  height: 100%;
+  width: 20%;
+}
+.sanPham {
+  height: 60%;
+  width: 80%;
+  background-color: blue;
+  border: 5px red solid;
+  position: relative;
+}
+.sanPham img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.tenSanPham {
+  position: absolute;
+  bottom: 0px;
+  height: 20%;
+  width: 100%;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  background-color: black;
 }
